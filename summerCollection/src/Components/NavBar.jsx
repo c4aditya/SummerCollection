@@ -5,6 +5,8 @@ import { CiShoppingCart } from "react-icons/ci";
 import { useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import { RiArrowDropDownLine } from "react-icons/ri";
+import logo from "../images/logo.png"
+import { NavLink } from "react-router-dom";
 
 function NavBar() {
     const [menu, setMenu] = useState(false)
@@ -16,12 +18,7 @@ function NavBar() {
     function handleClose() {
         setMenu(!menu)
     }
-    if (menu) {
-        document.body.style.backgroundColor = "#999999"
-    }
-    else {
-        document.body.style.backgroundColor = "white"
-    }
+
     return (
         <>
             <section className="nav-section">
@@ -36,17 +33,20 @@ function NavBar() {
                         <div className="catogries">
                             <ul>
 
-                                <li>Men</li>
-                                <li>Women</li>
-                                <li>Juinor</li>
+                            <NavLink to="/"><li>Men</li></NavLink>
+                            <NavLink to="/women">  <li>Women</li></NavLink>  
+                            <NavLink to="/kids"><li>Kids</li></NavLink>    
                             </ul>
                         </div>
 
 
                     </div>
-                    <div className="logo">
-                        <p>Summer Collections</p>
+                    <div className="main-logo">
+                        <div className="logo">
+                            <img src={logo} alt="logo-image" />
+                        </div>
                     </div>
+
 
                     <div className="right-nav-bar">
 
@@ -74,8 +74,8 @@ function NavBar() {
                                     <button onClick={handleClose}><IoMdClose /></button>
                                 </div>
                                 <div className="top-div-class-logo-and-buttons">
-                                    <div className="logo">
-                                        <h1>logo</h1>
+                                    <div className="logo inside-logo">
+                                        <img src={logo} alt="logo-image" />
                                     </div>
 
                                     <div className="top-side-bar-buttom">
@@ -130,8 +130,10 @@ function NavBar() {
 
 
                             </div>
+
                         </div>) : (<p> </p>)
                     }
+
                 </div>
             </aside>
         </>
