@@ -1,71 +1,262 @@
-*{
+* {
     padding: 0px;
     margin: 0px;
+    font-family: 'Roboto', sans-serif;
 }
-.nav-section{
-    border: 1px solid red;
+
+/*------------------------------------------------Nev Bar css start------------------------------------------------------- */
+
+.nav-section {
+    box-shadow: 0 1px 10px rgb(0,0,0,0.2)
 }
-.nav-bar{
+
+.nav-bar {
     padding-top: 20px;
-     padding-bottom: 20px;
+    padding-bottom: 20px;
     width: 95%;
     margin: auto;
-    
+    position: relative;
     display: flex;
     justify-content: space-between;
 }
+
 .nav-bar ul {
     list-style: none;
-    
-    
 }
-.nav-bar ul li{
-    
-    font-size: 1.4rem;
-      font-family: 'Roboto', sans-serif;
-}
-.letf-nav-bar{
-  
 
+.nav-bar ul li {
+    font-size: 1.2rem;
+}
+
+.letf-nav-bar {
     display: flex;
+    gap: 20px;
     align-items: center;
 }
 
-.logo p{
+.logo p {
     font-size: 1.4rem;
     font-weight: 600;
-     font-family: 'Roboto', sans-serif;
-     color: #3E3F45;
+    font-family: 'Roboto', sans-serif;
+    color: #3E3F45;
+}
+  .logo{
+        display: flex;
+        align-items: center;
+    }
+
+.letf-nav-bar ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
 }
 
-.letf-nav-bar ul{
+.letf-nav-bar ul li {
     display: flex;
-    list-style: none;
-    gap: 30px;
-}
-.letf-nav-bar ul li{
-    display: flex;
-   
     align-items: center;
 }
-.right-nav-bar{
-     display: flex;
-     align-items: center;
-  
+
+.right-nav-bar {
+    display: flex;
+    align-items: center;
 }
-.right-nav-bar ul{
-     display: flex;
+
+.right-nav-bar ul {
+    display: flex;
     list-style: none;
     gap: 30px;
 }
-.right-nav-bar ul li{
-   
+
+.right-nav-bar ul li {
     display: flex;
     font-size: 1.7rem;
     align-items: center;
-    
 }
-.right-nav-bar ul li svg{
+
+.right-nav-bar ul li svg {
     color: #3E3F45;
     font-weight: 800;
 }
+
+.sideMenubar {
+    top: 0px;
+    position: absolute;
+    width: 35%;
+    background-color: white;
+    transform: translateX(-100%);
+    transition: transform 0.5s ease-in-out;
+}
+.open{
+    transform: translateX(0%);
+}
+
+.side-bar-nav-bar {
+    border: 1px solid white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.top-div-class-logo-and-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.top-side-bar-buttom ul li {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.top-side-bar-buttom ul li button {
+    padding: 8px;
+    background-color: white;
+    border: 1px solid green;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.top-side-bar-buttom ul li span {
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+}
+.cross button {
+    font-size: 1.3rem;
+    position: absolute;
+    top: 5px;
+    right: 0%;
+    background-color: white;
+    border: none;
+    transform: translateX(-100%);
+}
+.productLists{
+    margin-top: 2%;
+   border-top: 1px dotted gray;
+}
+
+.productLists table{
+    margin-top: 2%;
+    width: 100%;
+    text-align: left;
+}
+
+.productLists table tr {
+    display: flex;    
+    flex-direction: column;
+}
+
+.productLists table tr td{
+    color: #111111;
+    font-weight: 500;
+    margin-top: 4.3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span{
+        font-size: 2rem;
+        }    
+}
+
+/* --------------------------------------------Nav bar ends------------------------------------------------------------- */
+
+
+/*--------------------------------------------- Addind media querys-------------------------------------------------------*/
+@media (max-width:1050px){
+
+    .nav-bar{
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+     .catogries ul li{
+        font-size: 1rem;
+    }
+    .logo p{
+        font-size: 1rem;
+    }
+    .right-nav-bar ul li{
+        font-size: 1.5rem;
+    }
+    .sideMenubar{
+        width: 50%;
+    }
+
+}
+@media (max-width:780px) {
+    .nav-bar{
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .catogries ul li{
+        font-size: 1rem;
+    }
+    .logo p{
+        font-size: 1.2rem
+    }
+   
+}
+@media (max-width:600px) {
+
+  
+
+    .catogries{
+        display: none;
+    }
+    
+    .logo{
+        display: flex;
+        align-items: center;
+    }
+    .logo p{
+        font-size: 1rem;
+    }
+    .right-nav-bar ul{
+        gap: 5px;
+    }
+
+    
+    .sideMenubar {
+        width: 100%;
+    }
+    .top-side-bar-buttom ul li button {
+        font-size: .9rem;
+        padding: 5px;
+    }
+    
+}
+
+@media (max-width:380px) {
+
+     .logo p{
+        font-size: .9rem;
+    }
+
+    .productLists table tr td {
+        margin-top: 1px;
+    }
+
+    .productLists table tr td svg{
+        font-size: 1.6rem;
+    }
+    .productLists table{
+        margin-top: 4%;
+    }
+  
+
+}
+
+
+@media  (max-width:325px){
+
+  
+
+   
+}
+
+
+
+
+
