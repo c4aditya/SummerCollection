@@ -7,8 +7,10 @@ import { IoMdClose } from "react-icons/io";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import logo from "../images/logo.png"
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function NavBar() {
+    const cart = useSelector((state) => state.Cart); 
     const [menu, setMenu] = useState(false)
     function handleMenu() {
         console.log("The Button is clicked")
@@ -53,7 +55,9 @@ function NavBar() {
                         <ul>
                             <li><GoPerson /> </li>
                             <li><CiHeart /></li>
-                            <li><CiShoppingCart /> </li>
+                          <NavLink to="/cart"> <li><CiShoppingCart />{
+                            cart.length > 0 ?(<p>{cart.length}</p>) : (<p></p>)
+                          } </li> </NavLink>  
                         </ul>
 
                     </div>
