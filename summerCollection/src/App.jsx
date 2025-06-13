@@ -8,7 +8,7 @@ import Menpage from './pages/MenPage';
 import Women from './pages/WomenPage';
 import Kid from "./Components/KidOPage";
 import Cart from "./pages/CartPage";
-import ProductDetails from './Components/ProductDetails';
+import ProductDetails from './pages/ProductDetails';
 function App() {
 
 

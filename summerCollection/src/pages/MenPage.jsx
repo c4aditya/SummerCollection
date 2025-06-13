@@ -9,6 +9,8 @@ import MenPorducts from "../Components/Data/MenProductData";
 import { useRef } from "react";
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { IoStar } from "react-icons/io5";
+import { FaRegHeart } from "react-icons/fa";
 
 function Menpage({ value }) {
     const nevigate = useNavigate()
@@ -84,20 +86,71 @@ function Menpage({ value }) {
                     <button onClick={slideRight}><FaChevronRight /></button>
                 </div>
 
+ 
             </div>
 
-            <div className="products">
+            {/* Product detials section where we can add to the cart */}
+              <div className="heading-our-product">
+                <h1>TOP SUMMER COLLECTIONS</h1>
+            </div>
+            <div className="procuct-details-main">
+            <div className="products-detials-main">
                 {
                     MenPorducts.map((data) => (
                         <div className="" key={data.id} onClick={() => nevigate("/productDetails", { state: data })}>
-                            <div className="image">
-                                <img src={data.colorOptionns[0].Image} />
+                            <div className="product-detials">
+
+                            <div className="product-details-image">
+                                
+                                      <img src={data.colorOptionns[0].Image} />
+                                   
+                              
+
+                                <div className="product-rating-wishlist">
+                                    <div className="product-rating">
+                                        <ul>
+                                            <li><IoStar/>{data.rating}</li>
+                                        </ul>
+                                     </div>
+
+                                     <div className="product-wishlist">
+                                        <button><FaRegHeart/></button>
+                                     </div>
+                                </div>
+
                             </div>
+
+                            <div className="product-main-details">
+                                
+                                 <div className="product-detials-descripction">
+                                <p>{data.descripction}</p>
+                            </div>
+                                <div className="product-details-title">
+                                <p>{data.title}</p>
+                            </div>
+
+                           
+
+                            <div className="pricediv">
+                                <div className="old-price">
+                                    <p><span><MdCurrencyRupee /></span>{data.newPrice}</p>
+                                </div>
+
+                                <div className="new-price">
+                                    <p><span><MdCurrencyRupee /></span>{data.oldPrice}</p>
+                                </div>
+                                </div>
+
+                                </div>
+
+                            </div>
+
 
 
                         </div>
                     ))
                 }
+            </div>
             </div>
 
         </>
