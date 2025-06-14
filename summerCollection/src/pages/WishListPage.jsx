@@ -5,6 +5,8 @@ import { useDispatch } from "react-redux";
 import { CiHeart } from "react-icons/ci";
 import { removeFromWishList } from "../Redux/Slice/WishList";
 import { NavLink } from "react-router-dom";
+import { FaAngleRight } from "react-icons/fa6";
+
 
 function WishListPage() {
   const wishlist = useSelector((state) => state.Wishlist);
@@ -55,9 +57,9 @@ function WishListPage() {
 
                 <ul>
                   <NavLink to="/">  <li>Home</li></NavLink> 
-                    <li> -</li>
+                    <li><FaAngleRight/></li>
                      <li>Product Details</li> 
-                       <li> -</li>
+                       <li><FaAngleRight/></li>
                       <li>Wishlist</li>
                 </ul>
                 

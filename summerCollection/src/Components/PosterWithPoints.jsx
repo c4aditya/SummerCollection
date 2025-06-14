@@ -35,9 +35,11 @@ function PosterWithPoints({ image, points }) {
                         </button>
                     </div>
 
-                    <img src={image[activePoints]}
+                    <img className="ac" src={image[activePoints]}
                         alt="Poster Image "
                     />
+
+                    <img className="dc" src="https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/banner-images/app_ban_obUM6Zb.jpg?format=webp&w=768&dpr=2.0"/>
 
                     <div className="next">
                         <button onClick={nextHandler}>

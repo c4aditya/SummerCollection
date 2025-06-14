@@ -8,11 +8,23 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 import logo from "../images/logo.png"
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 function NavBar() {
     const cart = useSelector((state) => state.Cart);
     const wishlist = useSelector((state) => state.Wishlist);
     const [menu, setMenu] = useState(false)
+    useEffect(() => {
+    if (menu) {
+        document.body.style.overflow = "hidden";
+    } else {
+        document.body.style.overflow = "auto";
+    }
+
+    return () => {
+        document.body.style.overflow = "auto";
+    };
+}, [menu]);
     function handleMenu() {
         console.log("The Button is clicked")
         setMenu(!menu)
@@ -21,6 +33,11 @@ function NavBar() {
     function handleClose() {
         setMenu(!menu)
     }
+    function handlePage(){
+        setMenu(!menu)
+    }
+
+
 
     return (
         <>
@@ -36,8 +53,8 @@ function NavBar() {
                         <div className="catogries">
                             <ul>
 
-                                <NavLink to="/"><li>Men</li></NavLink>
-                                <NavLink to="/women"><li>Women</li></NavLink>
+                                <NavLink to="/" className="romovebg"><li>Men</li></NavLink>
+                                <NavLink to="/women" className="romovebg"><li>Women</li></NavLink>
                             </ul>
                         </div>
 
@@ -112,8 +129,8 @@ function NavBar() {
                                         </tr>
 
                                         <tr>
-                                            <td>Men <span><RiArrowDropDownLine /></span></td>
-                                            <td>Women <span><RiArrowDropDownLine /></span></td>
+                                     <NavLink className="romovebg" to="/">    <td onClick={handlePage}>Men <span><RiArrowDropDownLine /></span></td> </NavLink> 
+                                     <NavLink className="romovebg" to="/women">     <td  onClick={handlePage}>Women <span><RiArrowDropDownLine /></span></td> </NavLink>
                                             <td>Kids <span><RiArrowDropDownLine /></span></td>
                                         </tr>
                                     </table>

@@ -4,16 +4,59 @@ import { removeToCart } from "../Redux/Slice/Cart";
 import { CiShoppingCart } from "react-icons/ci";
 import { MdCurrencyRupee } from "react-icons/md";
 import { NavLink } from "react-router-dom";
+import { FaAngleRight } from "react-icons/fa6";
+
+
 function Cart() {
     const dispatch = useDispatch();
     const Cart = useSelector((state) => state.Cart || []);
     const totalItems = Cart.length;
     const totalPrice = Cart.reduce((total, product) => total + parseFloat(product.price), 0);
 
+   function handlePayment() {
+  const options = {
+    key: "rzp_test_YourTestKeyHere", 
+    amount: totalPrice * 100, 
+    currency: "INR",
+    name: "NAMO AI WEBTECH",
+    description: "Test Transaction",
+    image: "http://localhost:5173/src/images/logo.png", 
+    handler: function (response) {
+      alert("✅ Payment Successful!\nPayment ID: " + response.razorpay_payment_id);
+    },
+    prefill: {
+      name: "Aditya Singh",
+      email: "test@example.com",
+      contact: "9999999999",
+    },
+    notes: {
+      address: "NAMO Tech Headquarters",
+    },
+    theme: {
+      color: "#3399cc",
+    },
+  };
+
+  const rzp = new window.Razorpay(options);
+  rzp.open();
+}
+
     return (
         <>
-            {
-                Cart.length > 0 ? (
+        {Cart.length > 0 ? (  
+                    <>
+                    <div className="path">
+                
+                                <ul>
+                                  <NavLink to="/">  <li>Home</li></NavLink> 
+                                    <li><FaAngleRight/></li>
+                                     <li>Product Details</li> 
+                                       <li><FaAngleRight/></li>
+                                      <li>Cart</li>
+                                </ul>
+                                
+                             </div>
+
                     <div className="cart-section">
                         <div className="main-cart-page">
                             {
@@ -99,12 +142,12 @@ function Cart() {
                                 </div>
 
                                 <div className="checkout-button">
-                                    <button>Checkout</button>
+                                    <button onClick={handlePayment}>Place Order</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                ) : (
+                </>) : (
                     <div>
                         <div className="empty-cart-show">
                             <div className="empty-cart">

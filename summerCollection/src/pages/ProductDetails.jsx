@@ -10,177 +10,183 @@ import { FaWhatsapp } from "react-icons/fa";
 import { CiInstagram } from "react-icons/ci";
 import { CiTwitter } from "react-icons/ci";
 import { CiFacebook } from "react-icons/ci";
-function ProductDetails(){
+import { FaAngleRight } from "react-icons/fa6";
+import { NavLink } from "react-router-dom";
+function ProductDetails() {
     const dispatch = useDispatch()
     const location = useLocation()
     const product = location.state
-        const [activeColor , setColor] = useState(product.colorOptionns[0])
+    const [activeColor, setColor] = useState(product.colorOptionns[0])
 
-        function handleAddToCart(){
-            const productToAdd ={
-                id:product.id,
-                title:product.title,
-                descripction:product.descripction,
-                price:product.newPrice,
-                image:activeColor.Image,              
+    function handleAddToCart() {
+        const productToAdd = {
+            id: product.id,
+            title: product.title,
+            descripction: product.descripction,
+            price: product.newPrice,
+            image: activeColor.Image,
 
-            }           
-
-            dispatch(addToCart(productToAdd));
-            // toast.success("Product is Added in cart")
         }
 
+        dispatch(addToCart(productToAdd));
+        // toast.success("Product is Added in cart")
+    }
+
     function handleWishlistItmes() {
-    const productToAdd = {
-        id: product.id,
-        title: product.title,
-        descripction: product.descripction,
-        price: product.newPrice,
-        image: activeColor.Image,
+        const productToAdd = {
+            id: product.id,
+            title: product.title,
+            descripction: product.descripction,
+            price: product.newPrice,
+            image: activeColor.Image,
 
-    };
-    console.log(productToAdd)
+        };
+        console.log(productToAdd)
+        dispatch(addToWishList(productToAdd));
 
-    dispatch(addToWishList(productToAdd));
-    // Optional toast
-    // toast.success("Product added to Wishlist")
-}    
-    return(
+    }
+    return (
         <>
-      <div>  
-      
-       
-    </div>
+              <div className="path">
 
-    <div className="main-cloth-div">
-
-        <div className="cloth-image">
-            <img src={activeColor.Image}/>
-        </div>
-
-        <div className="about-cloth">
-            <div className="cloth-title">
-                <p>{product.descripction}</p>
-                <p className="title-cloth">{product.title}</p>
-            </div>
-            <hr></hr>
-
-            <div className="product-price">
-                <p><span><MdCurrencyRupee/></span>{product.newPrice}</p>
-            </div>
-    
-           <div className="dispatch">
-            <p> * Dispatch in 5 - 7 days</p>
-           </div>
-           
-           <div className="size">
-            <p>Please Select Size</p>
-            <ul>
-                <li>XS</li>
-                <li>S</li>
-                <li>M</li>
-                <li>L</li>
-                <li>XL</li>
-                <li>XLL</li>
-                <li>2XL</li>
-            </ul>
-           </div>
-
-           <div className="colors">
-             <p>Please select the color </p>
-            <div className="product-images">
+                <ul>
+                  <NavLink to="/">  <li>Home</li></NavLink> 
+                    <li><FaAngleRight/></li>
+                     <li>Product Details</li> 
+                      
+                </ul>
                 
-             {product.colorOptionns.map((option, index) => (
-            
-            <button key={index} onClick={()=>setColor(option)} >
-            <img src={option.Image}  alt="Color Options "/>
-            
-          </button>
-          
-          
-        ))}
-      </div>         
+             </div>
 
-           </div>
+            <div className="main-cloth-div">
 
-           <div className="buttons">
-            <div className="addToCart">
-                <button onClick={handleAddToCart}>Add To Cart</button>
-            </div>
+                <div className="cloth-image">
+                    <img src={activeColor.Image} />
+                </div>
 
-            <div className="wishlist">
-                <button onClick={handleWishlistItmes}>WishList</button>
-            </div>
-           </div>
+                <div className="about-cloth">
+                    <div className="cloth-title">
+                        <p>{product.descripction}</p>
+                        <p className="title-cloth">{product.title}</p>
+                    </div>
+                    <hr></hr>
 
-           <div className="social-media">
-            <div className="heading-social">
-             <p> Contact us</p>  
-            </div>
+                    <div className="product-price">
+                        <p><span><MdCurrencyRupee /></span>{product.newPrice}</p>
+                    </div>
 
-            <div className="social-media-links-main">
-                          
+                    <div className="dispatch">
+                        <p> * Dispatch in 5 - 7 days</p>
+                    </div>
+
+                    <div className="size">
+                        <p>Please Select Size</p>
+                        <ul>
+                            <li>XS</li>
+                            <li>S</li>
+                            <li>M</li>
+                            <li>L</li>
+                            <li>XL</li>
+                            <li>XLL</li>
+                            <li>2XL</li>
+                        </ul>
+                    </div>
+
+                    <div className="colors">
+                        <p>Please select the color </p>
+                        <div className="product-images">
+
+                            {product.colorOptionns.map((option, index) => (
+
+                                <button key={index} onClick={() => setColor(option)} >
+                                    <img src={option.Image} alt="Color Options " />
+
+                                </button>
+
+
+                            ))}
+                        </div>
+
+                    </div>
+
+                    <div className="buttons">
+                        <div className="addToCart">
+                            <button onClick={handleAddToCart}>Add To Cart</button>
+                        </div>
+
+                        <div className="wishlist">
+                            <button onClick={handleWishlistItmes}>WishList</button>
+                        </div>
+                    </div>
+
+                    <div className="social-media">
+                        <div className="heading-social">
+                            <p> Contact us</p>
+                        </div>
+
+                        <div className="social-media-links-main">
+
                             <ul>
                                 <li>
-                                   <CiFacebook/>
+                                    <CiFacebook />
                                 </li>
                                 <li>
-                                   <FaWhatsapp/>
+                                    <FaWhatsapp />
                                 </li>
                                 <li>
                                     <CiInstagram />
                                 </li>
 
                                 <li>
-                                    <CiTwitter/>
+                                    <CiTwitter />
                                 </li>
                             </ul>
                         </div>
 
-           </div>
+                    </div>
 
-           <div className="ship">         
+                    <div className="ship">
 
-           <div className="shiping">
-            <div className="text">
-               <p>Shiping</p>
+                        <div className="shiping">
+                            <div className="text">
+                                <p>Shiping</p>
+                            </div>
+
+                            <div className="mark">
+                                +
+                            </div>
+                        </div>
+
+                        <hr></hr>
+
+                        <div className="shiping">
+                            <div className="text">
+                                <p>Additional Info</p>
+                            </div>
+
+                            <div className="mark">
+                                +
+                            </div>
+                        </div>
+
+                        <hr></hr>
+
+                        <div className="shiping">
+                            <div className="text">
+                                <p>Descripction</p>
+                            </div>
+
+                            <div className="mark">
+                                +
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
-
-            <div className="mark">
-                +
-            </div>
-           </div>
-
-             <hr></hr>
-
-            <div className="shiping">
-            <div className="text">
-               <p>Additional Info</p>
-            </div>
-
-            <div className="mark">
-                +
-            </div>
-           </div>
-
-           <hr></hr>
-
-            <div className="shiping">
-            <div className="text">
-               <p>Descripction</p>
-            </div>
-
-            <div className="mark">
-                +
-            </div>
-           </div>
-
-           </div>
-
-        </div>
-
-    </div>
-    </>
+        </>
     )
 }
 
