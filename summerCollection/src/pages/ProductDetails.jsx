@@ -2,6 +2,7 @@ import { useState } from "react";
 import { MdCurrencyRupee } from "react-icons/md";
 import { useLocation } from "react-router-dom";
 import { addToCart } from "../Redux/Slice/Cart";
+import { addToWishList } from "../Redux/Slice/WishList";
 import { useDispatch } from "react-redux"
 import { toast } from 'react-toastify';
 import { FaFacebookSquare } from "react-icons/fa";
@@ -19,13 +20,31 @@ function ProductDetails(){
             const productToAdd ={
                 id:product.id,
                 title:product.title,
-                image:activeColor.Image
+                descripction:product.descripction,
+                price:product.newPrice,
+                image:activeColor.Image,              
 
-            }
+            }           
 
             dispatch(addToCart(productToAdd));
-            toast.success("Product is Added in cart")
+            // toast.success("Product is Added in cart")
         }
+
+    function handleWishlistItmes() {
+    const productToAdd = {
+        id: product.id,
+        title: product.title,
+        descripction: product.descripction,
+        price: product.newPrice,
+        image: activeColor.Image,
+
+    };
+    console.log(productToAdd)
+
+    dispatch(addToWishList(productToAdd));
+    // Optional toast
+    // toast.success("Product added to Wishlist")
+}    
     return(
         <>
       <div>  
@@ -73,8 +92,9 @@ function ProductDetails(){
                 
              {product.colorOptionns.map((option, index) => (
             
-                    <button key={index} onClick={()=>setColor(option)} >
+            <button key={index} onClick={()=>setColor(option)} >
             <img src={option.Image}  alt="Color Options "/>
+            
           </button>
           
           
@@ -89,7 +109,7 @@ function ProductDetails(){
             </div>
 
             <div className="wishlist">
-                <button>Wishlist</button>
+                <button onClick={handleWishlistItmes}>WishList</button>
             </div>
            </div>
 

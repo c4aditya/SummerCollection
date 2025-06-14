@@ -9,13 +9,12 @@ import Women from './pages/WomenPage';
 import Kid from "./Components/KidOPage";
 import Cart from "./pages/CartPage";
 import ProductDetails from './pages/ProductDetails';
+import WishListPage from './pages/WishListPage';
 function App() {
-
-
-  return (
+  return (    
     <>
  
-    < ToastContainer/>
+    <ToastContainer/>
     <BrowserRouter>
      <NavBar></NavBar>
     <Routes>
@@ -24,7 +23,8 @@ function App() {
       <Route path="/women" element={<Women/>} />
       <Route path="/kids" element={<Kid/>} />
       <Route path="/cart" element={<Cart/>} />
-       <Route path="/productDetails" element={<ProductDetails/>} />
+      <Route path='/wishlist' element={<WishListPage/>} />
+      <Route path="/productDetails" element={<ProductDetails/>} />
 
      
     </Routes>

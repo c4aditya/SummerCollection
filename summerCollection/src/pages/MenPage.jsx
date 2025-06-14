@@ -54,7 +54,7 @@ function Menpage({ value }) {
                     {
                         MenData.map((data) => (
                             <div className="products" key={data.id}>
-                                <button className="btn" onClick={() => { dispatch(addToCart(data)); toast.success('Product added to cart!') }}>
+                                <button className="btn">
 
                                     <div className="products-images">
                                         <img src={data.image} alt="Men Products" />
@@ -107,11 +107,7 @@ function Menpage({ value }) {
                               
 
                                 <div className="product-rating-wishlist">
-                                    <div className="product-rating">
-                                        <ul>
-                                            <li><IoStar/>{data.rating}</li>
-                                        </ul>
-                                     </div>
+                                   
 
                                      <div className="product-wishlist">
                                         <button><FaRegHeart/></button>
@@ -142,11 +138,7 @@ function Menpage({ value }) {
                                 </div>
 
                                 </div>
-
                             </div>
-
-
-
                         </div>
                     ))
                 }

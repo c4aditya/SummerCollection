@@ -1,23 +1,43 @@
 import {createSlice} from '@reduxjs/toolkit'
+import { toast } from 'react-toastify';
+
 // create a slice 
+const getInitialCart = () => {
+  const cart = localStorage.getItem("cart");
+  return cart ? JSON.parse(cart) : [];
+};
 
 export const CartSlice = createSlice({
     name:"Cart",
-    initialState:[],
+    initialState:getInitialCart(),
 
     reducers:{
         addToCart:(state , action)=>{
+              const isExist = state.find(item => item.id === action.payload.id);
+        
+      if (isExist) {
+        toast.warning("Item is already added to the cart!"); // ✅ toast on duplicate
+        return;
 
+      }
+      else{
+
+         toast.success("Item is already added to the cart!");
+            
+      }
             console.log("Add to cart button  is clicked")
             state.push(action.payload)
             
+            localStorage.setItem("cart", JSON.stringify(state));
 
         },
  // yhss state ka mtlb Cart : CartSlice hai jo humne confugure storeage me store kiya hua hau 
         removeToCart:(state,action)=>{
             
            console.log("The Delete button is clicked ")
-           return  state.filter( (item) => item.id !== action.payload)
+          const updatedCart = state.filter( (item) => item.id !== action.payload)
+           localStorage.setItem("cart", JSON.stringify(updatedCart)); // ⬅️ update localStorage
+      return updatedCart;
 
             
 

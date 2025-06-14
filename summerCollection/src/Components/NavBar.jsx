@@ -10,7 +10,8 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function NavBar() {
-    const cart = useSelector((state) => state.Cart); 
+    const cart = useSelector((state) => state.Cart);
+    const wishlist = useSelector((state) => state.Wishlist);
     const [menu, setMenu] = useState(false)
     function handleMenu() {
         console.log("The Button is clicked")
@@ -35,9 +36,8 @@ function NavBar() {
                         <div className="catogries">
                             <ul>
 
-                            <NavLink to="/"><li>Men</li></NavLink>
-                            <NavLink to="/women">  <li>Women</li></NavLink>  
-                            <NavLink to="/kids"><li>Kids</li></NavLink>    
+                                <NavLink to="/"><li>Men</li></NavLink>
+                                <NavLink to="/women"><li>Women</li></NavLink>
                             </ul>
                         </div>
 
@@ -54,10 +54,12 @@ function NavBar() {
 
                         <ul>
                             <li><GoPerson /> </li>
-                            <li><CiHeart /></li>
-                          <NavLink to="/cart"> <li><CiShoppingCart />{
-                            cart.length > 0 ?(<p>{cart.length}</p>) : (<p></p>)
-                          } </li> </NavLink>  
+                            <NavLink className="" to="/wishlist"> <li className="heart"><CiHeart />{
+                                wishlist.length > 0 ? (<p className="wishlist-mark">{wishlist.length}</p>) : (null)
+                            } </li> </NavLink>
+                            <NavLink className="underline text" to="/cart"> <li><CiShoppingCart />{
+                                cart.length > 0 ? (<p className="cart-mark">{cart.length}</p>) : (null)
+                            } </li> </NavLink>
                         </ul>
 
                     </div>
