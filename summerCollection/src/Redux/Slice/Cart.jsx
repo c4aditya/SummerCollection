@@ -16,13 +16,12 @@ export const CartSlice = createSlice({
               const isExist = state.find(item => item.id === action.payload.id);
         
       if (isExist) {
-        toast.warning("Item is already added to the cart!"); // ✅ toast on duplicate
+        toast.warning("Item is already added to the cart!");  
         return;
 
       }
       else{
-
-         toast.success("Item is already added to the cart!");
+         toast.success("Product is added to your Cart ");
             
       }
             console.log("Add to cart button  is clicked")
@@ -35,9 +34,11 @@ export const CartSlice = createSlice({
         removeToCart:(state,action)=>{
             
            console.log("The Delete button is clicked ")
-          const updatedCart = state.filter( (item) => item.id !== action.payload)
-           localStorage.setItem("cart", JSON.stringify(updatedCart)); // ⬅️ update localStorage
-      return updatedCart;
+           const updatedCart = state.filter( (item) => item.id !== action.payload)
+           localStorage.setItem("cart", JSON.stringify(updatedCart)); 
+           toast.success("The product is deleted from the cart ")
+           return updatedCart;
+           
 
             
 
